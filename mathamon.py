@@ -6,6 +6,7 @@ from random import random
 
 # main menu function
 
+
 #constants
 
 MAX_DECIMAL_PLACES = 3
@@ -13,6 +14,11 @@ MIN_DECIMAL_PLACES = 1
 
 MIN_MULTIPLICAND = 1
 MAX_MULTIPLICAND = 100
+
+ADDITION = 1
+SUBTRACTION = 2
+MULTIPLICATION = 3
+DIVISION = 4
 
 # help (printing the controls)
 
@@ -48,17 +54,20 @@ def choose_multiplier():
 	return round(random(), choose_decimal_places())
 
 def choose_question_type():
-	question_type = randint(1, 4)
-	if question_type == 1:
-		return "+"
-	elif question_type == 2:
-		return "-"
-	elif question_type == 3:
-		return "*"
-	elif question_type == 4:
-		return "/"
+	return randint(1, 4)
 
 # running
 if __name__ == '__main__':
-	print("{} {} {}".format(choose_multiplicand(), choose_question_type(), choose_multiplier()))
+	question_type = choose_question_type()
+	question_type = MULTIPLICATION # TODO implement other types
+
+	if question_type == MULTIPLICATION:
+		multiplicand = choose_multiplicand()
+		multiplier = choose_multiplier()
+		answer = multiplicand * multiplier
+
+		print("{} * {} = {}".format(multiplicand, multiplier, answer))
+	
+	else:
+		print("Question type {} not implemented yet!".format(question_type))
 
