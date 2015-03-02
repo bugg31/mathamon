@@ -6,6 +6,13 @@ from random import random
 
 # main menu function
 
+#constants
+
+MAX_DECIMAL_PLACES = 3
+MIN_DECIMAL_PLACES = 1
+
+MIN_MULTIPLICAND = 1
+MAX_MULTIPLICAND = 100
 
 # help (printing the controls)
 
@@ -29,15 +36,29 @@ from random import random
 # 1/7 + 4/8
 # 2 10/200 + 9 138/200
 
-def choose_integer():
-	return randint(1, 100)
+# Making questions
+def choose_decimal_places():
+	return randint(MIN_DECIMAL_PLACES, MAX_DECIMAL_PLACES)
+
+def choose_multiplicand():
+	return randint(MIN_MULTIPLICAND, MAX_MULTIPLICAND)
 
 
-def choose_float():
-	return round(random(),3)
+def choose_multiplier():
+	return round(random(), choose_decimal_places())
 
+def choose_question_type():
+	question_type = randint(1, 4)
+	if question_type == 1:
+		return "+"
+	elif question_type == 2:
+		return "-"
+	elif question_type == 3:
+		return "*"
+	elif question_type == 4:
+		return "/"
 
+# running
 if __name__ == '__main__':
-	print(choose_integer())
-	print(choose_float())
+	print("{} {} {}".format(choose_multiplicand(), choose_question_type(), choose_multiplier()))
 
