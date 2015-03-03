@@ -3,6 +3,7 @@
 #Imports
 from random import randint
 from random import random
+from random import uniform
 
 # main menu function
 
@@ -51,7 +52,7 @@ def choose_multiplicand():
 
 
 def choose_multiplier():
-	return round(random(), choose_decimal_places())
+	return round(uniform(0.1, 1), choose_decimal_places())
 
 def choose_question_type():
 	return randint(1, 4)
