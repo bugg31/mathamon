@@ -56,18 +56,28 @@ def choose_multiplier():
 def choose_question_type():
 	return randint(1, 4)
 
+def multiplication_maker():
+	multiplicand = choose_multiplicand()
+	multiplier = choose_multiplier()
+	answer = multiplicand * multiplier
+	return (multiplicand, multiplier, answer)
+
+def division_maker():
+	quotient, divisor, dividend = multiplication_maker()
+	return (dividend, divisor, quotient)
+
+
 # running
 if __name__ == '__main__':
 	question_type = choose_question_type()
-	question_type = MULTIPLICATION # TODO implement other types
+	question_type = DIVISION # TODO implement other types
 
 	if question_type == MULTIPLICATION:
-		multiplicand = choose_multiplicand()
-		multiplier = choose_multiplier()
-		answer = multiplicand * multiplier
-
+		multiplicand, multiplier, answer = multiplication_maker()
 		print("{} * {} = {}".format(multiplicand, multiplier, answer))
-	
+	elif question_type == DIVISION:
+		dividend, divisor, quotient = division_maker()
+		print("{} / {} = {}".format(dividend, divisor, quotient))
 	else:
 		print("Question type {} not implemented yet!".format(question_type))
 
