@@ -8,7 +8,6 @@ from fractions import Fraction
 
 # main menu function
 
-
 #constants
 
 MAX_DECIMAL_PLACES = 3
@@ -25,26 +24,6 @@ MULTIPLICATION = 3
 DIVISION = 4
 
 # help (printing the controls)
-
-
-# Questions
-
-# 10 * 0.1
-# 10 * 0.001
-# 100 * 0.981
-
-# 9 * 0.4
-# 2 * 0.274
-# 1 * 0.283
-# 3 * 1.3
-# 27 * 0.4
-
-# division: special case of multiplication so we get nice numbers
-
-
-# 1/2 + 3/4
-# 1/7 + 4/8
-# 2 10/200 + 9 138/200
 
 # Making questions
 def choose_decimal_places():
@@ -79,13 +58,9 @@ def fraction_maker():
 	fraction_2 = Fraction(decimal_2, decimal_4)
 	return (fraction_1, fraction_2)
 
-
-
 # running
 if __name__ == '__main__':
-	fraction_maker() #delete after finishing all types
 	question_type = choose_question_type()
-	question_type = ADDITION # TODO implement other types
 
 	if question_type == MULTIPLICATION:
 		multiplicand, multiplier, answer = multiplication_maker()
@@ -97,6 +72,9 @@ if __name__ == '__main__':
 		fraction_1, fraction_2 = fraction_maker()
 		answer = fraction_1 + fraction_2
 		print("{} + {} = {}".format(fraction_1, fraction_2, answer))
+	elif question_type == SUBTRACTION:
+		fraction_1, fraction_2 = fraction_maker()
+		answer = fraction_1 - fraction_2
+		print("{} - {} = {}".format(fraction_1, fraction_2, answer))
 	else:
 		print("Question type {} not implemented yet!".format(question_type))
-
