@@ -4,6 +4,7 @@
 from random import randint
 from random import random
 from random import uniform
+from fractions import Fraction
 
 # main menu function
 
@@ -12,6 +13,8 @@ from random import uniform
 
 MAX_DECIMAL_PLACES = 3
 MIN_DECIMAL_PLACES = 1
+
+FRACTION_PLACES = 1
 
 MIN_MULTIPLICAND = 1
 MAX_MULTIPLICAND = 100
@@ -67,11 +70,22 @@ def division_maker():
 	quotient, divisor, dividend = multiplication_maker()
 	return (dividend, divisor, quotient)
 
+def fraction_maker():
+	decimal_1 = randint(1, 10)
+	decimal_2 = randint(1, 10)
+	decimal_3 = randint(1, 10)
+	decimal_4 = randint(1, 10)
+	fraction_1 = Fraction(decimal_1, decimal_3)
+	fraction_2 = Fraction(decimal_2, decimal_4)
+	return (fraction_1, fraction_2)
+
+
 
 # running
 if __name__ == '__main__':
+	fraction_maker() #delete after finishing all types
 	question_type = choose_question_type()
-	question_type = DIVISION # TODO implement other types
+	question_type = ADDITION # TODO implement other types
 
 	if question_type == MULTIPLICATION:
 		multiplicand, multiplier, answer = multiplication_maker()
@@ -79,6 +93,10 @@ if __name__ == '__main__':
 	elif question_type == DIVISION:
 		dividend, divisor, quotient = division_maker()
 		print("{} / {} = {}".format(dividend, divisor, quotient))
+	elif question_type == ADDITION:
+		fraction_1, fraction_2 = fraction_maker()
+		answer = fraction_1 + fraction_2
+		print("{} + {} = {}".format(fraction_1, fraction_2, answer))
 	else:
 		print("Question type {} not implemented yet!".format(question_type))
 
