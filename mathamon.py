@@ -6,8 +6,6 @@ from random import random
 from random import uniform
 from fractions import Fraction
 
-# main menu function
-
 #constants
 
 MAX_DECIMAL_PLACES = 3
@@ -22,6 +20,36 @@ ADDITION = 1
 SUBTRACTION = 2
 MULTIPLICATION = 3
 DIVISION = 4
+
+#area variables
+main_menu_area = 1
+helping = 0
+asking = 0
+level1 = 0
+level2 = 0
+level3 = 0
+level4 = 0
+level5 = 0
+raw_imputing = 1
+
+# Main Menu
+def main_menu():
+	print("Hello and welcome to Mathamon!")
+	print("Just type in your answer to everything and yeah...")
+	if raw_imputing == 1:
+		next_area = raw_input("Do You want to 'Play' or 'Get Help'")
+		global raw_imputing = 0
+		next_area.lowercase
+
+	if next_area == "play":
+		global main_menu_area = false
+		return next_area
+	elif next_area == "get help":
+		global main_menu_area = false
+		return next_area
+	else:
+		print("That is not valid.")
+		global raw_imputing = 1
 
 # help (printing the controls)
 
@@ -60,21 +88,24 @@ def fraction_maker():
 
 # running
 if __name__ == '__main__':
-	question_type = choose_question_type()
+	if asking == 1:
 
-	if question_type == MULTIPLICATION:
-		multiplicand, multiplier, answer = multiplication_maker()
-		print("{} * {} = {}".format(multiplicand, multiplier, answer))
-	elif question_type == DIVISION:
-		dividend, divisor, quotient = division_maker()
-		print("{} / {} = {}".format(dividend, divisor, quotient))
-	elif question_type == ADDITION:
-		fraction_1, fraction_2 = fraction_maker()
-		answer = fraction_1 + fraction_2
-		print("{} + {} = {}".format(fraction_1, fraction_2, answer))
-	elif question_type == SUBTRACTION:
-		fraction_1, fraction_2 = fraction_maker()
-		answer = fraction_1 - fraction_2
-		print("{} - {} = {}".format(fraction_1, fraction_2, answer))
-	else:
-		print("Question type {} not implemented yet!".format(question_type))
+		question_type = 129
+		if question_type == MULTIPLICATION:
+			multiplicand, multiplier, answer = multiplication_maker()
+			print("{} * {} = {}".format(multiplicand, multiplier, answer))
+		elif question_type == DIVISION:
+			dividend, divisor, quotient = division_maker()
+			print("{} / {} = {}".format(dividend, divisor, quotient))
+		elif question_type == ADDITION:
+			fraction_1, fraction_2 = fraction_maker()
+			answer = fraction_1 + fraction_2
+			print("{} + {} = {}".format(fraction_1, fraction_2, answer))
+		elif question_type == SUBTRACTION:
+			fraction_1, fraction_2 = fraction_maker()
+			answer = fraction_1 - fraction_2
+			print("{} - {} = {}".format(fraction_1, fraction_2, answer))
+		else:
+			print("Question type {} not implemented yet!".format(question_type))
+	elif main_menu_area == 1:
+		main_menu()
