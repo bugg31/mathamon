@@ -88,4 +88,6 @@ def asking_loop():
 			break
 # running
 if __name__ == '__main__':
+	print("Always have a decimal at the end so if the answer is 60, type 60.0 otherwise it bugs out")
+	print("answer decimals with decimals and fractions with fractions.")
 	asking_loop()
