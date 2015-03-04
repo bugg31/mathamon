@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# for running it without terminal
+# http://www.tutorialspoint.com/execute_python_online.php 
+
 #Imports
 from random import randint
 from random import random
