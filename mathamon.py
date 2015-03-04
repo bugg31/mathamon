@@ -21,37 +21,6 @@ SUBTRACTION = 2
 MULTIPLICATION = 3
 DIVISION = 4
 
-#area variables
-main_menu_area = 1
-helping = 0
-asking = 0
-level1 = 0
-level2 = 0
-level3 = 0
-level4 = 0
-level5 = 0
-raw_imputing = 1
-
-# Main Menu
-def main_menu():
-	print("Hello and welcome to Mathamon!")
-	print("Just type in your answer to everything and yeah...")
-	if raw_imputing == 1:
-		next_area = raw_input("Do You want to 'Play' or 'Get Help'")
-		global raw_imputing = 0
-		next_area.lowercase
-
-	if next_area == "play":
-		global main_menu_area = false
-		return next_area
-	elif next_area == "get help":
-		global main_menu_area = false
-		return next_area
-	else:
-		print("That is not valid.")
-		global raw_imputing = 1
-
-# help (printing the controls)
 
 # Making questions
 def choose_decimal_places():
@@ -86,26 +55,29 @@ def fraction_maker():
 	fraction_2 = Fraction(decimal_2, decimal_4)
 	return (fraction_1, fraction_2)
 
-# running
-if __name__ == '__main__':
-	if asking == 1:
+def asking_loop():
+	while True:
+		question_type = choose_question_type()
 
-		question_type = 129
 		if question_type == MULTIPLICATION:
 			multiplicand, multiplier, answer = multiplication_maker()
-			print("{} * {} = {}".format(multiplicand, multiplier, answer))
+			players_answer = raw_input("{} * {} = ?".format(multiplicand, multiplier))
 		elif question_type == DIVISION:
 			dividend, divisor, quotient = division_maker()
-			print("{} / {} = {}".format(dividend, divisor, quotient))
+			players_answer = raw_input("{} / {} = ?".format(dividend, divisor))
 		elif question_type == ADDITION:
 			fraction_1, fraction_2 = fraction_maker()
 			answer = fraction_1 + fraction_2
-			print("{} + {} = {}".format(fraction_1, fraction_2, answer))
+			players_answer = raw_input("{} + {} = ?".format(fraction_1, fraction_2))
 		elif question_type == SUBTRACTION:
 			fraction_1, fraction_2 = fraction_maker()
 			answer = fraction_1 - fraction_2
-			print("{} - {} = {}".format(fraction_1, fraction_2, answer))
+			players_answer = raw_input("{} - {} = ?".format(fraction_1, fraction_2))
 		else:
 			print("Question type {} not implemented yet!".format(question_type))
-	elif main_menu_area == 1:
-		main_menu()
+
+
+
+# running
+if __name__ == '__main__':
+	asking_loop()
