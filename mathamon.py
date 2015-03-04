@@ -56,8 +56,8 @@ def fraction_maker():
 	return (fraction_1, fraction_2)
 
 def asking_loop():
+	points = 0
 	while True:
-		points = 0
 		question_type = choose_question_type()
 
 		if question_type == MULTIPLICATION:
@@ -77,23 +77,15 @@ def asking_loop():
 		else:
 			print("Question type {} not implemented yet!".format(question_type))
 
-		print("{} is type: {}".format(players_answer, type(players_answer)))
-		print("{} is type: {}".format(answer, type(answer)))
-
-		if players_answer == answer:
+		if players_answer.strip() == str(answer):
+			print("CORRECT :D")
 			points += 1
+			print("You have {} points".format(points))
 		else:
 			print("You got it wrong D:")
 			print("Your score was {}".format(points))
 			print("The answer was {}".format(answer))
 			break
-
-
-
-
-
-
-
 # running
 if __name__ == '__main__':
 	asking_loop()
