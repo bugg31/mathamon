@@ -57,24 +57,40 @@ def fraction_maker():
 
 def asking_loop():
 	while True:
+		points = 0
 		question_type = choose_question_type()
 
 		if question_type == MULTIPLICATION:
 			multiplicand, multiplier, answer = multiplication_maker()
-			players_answer = raw_input("{} * {} = ?".format(multiplicand, multiplier))
+			players_answer = raw_input("{} * {} = ".format(multiplicand, multiplier))
 		elif question_type == DIVISION:
-			dividend, divisor, quotient = division_maker()
-			players_answer = raw_input("{} / {} = ?".format(dividend, divisor))
+			dividend, divisor, answer = division_maker()
+			players_answer = raw_input("{} / {} = ".format(dividend, divisor))
 		elif question_type == ADDITION:
 			fraction_1, fraction_2 = fraction_maker()
 			answer = fraction_1 + fraction_2
-			players_answer = raw_input("{} + {} = ?".format(fraction_1, fraction_2))
+			players_answer = raw_input("{} + {} = ".format(fraction_1, fraction_2))
 		elif question_type == SUBTRACTION:
 			fraction_1, fraction_2 = fraction_maker()
 			answer = fraction_1 - fraction_2
-			players_answer = raw_input("{} - {} = ?".format(fraction_1, fraction_2))
+			players_answer = raw_input("{} - {} = ".format(fraction_1, fraction_2))
 		else:
 			print("Question type {} not implemented yet!".format(question_type))
+
+		print("{} is type: {}".format(players_answer, type(players_answer)))
+		print("{} is type: {}".format(answer, type(answer)))
+
+		if players_answer == answer:
+			points += 1
+		else:
+			print("You got it wrong D:")
+			print("Your score was {}".format(points))
+			print("The answer was {}".format(answer))
+			break
+
+
+
+
 
 
 
